@@ -3,7 +3,7 @@
         <div class="container h-100">
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-5">
-              <div class="hero-content">
+              <div class="principal-content">
                 <h1 class="hero-title">
                   BRINAMINI
                 </h1>
@@ -18,7 +18,7 @@
             </div>
             <div class="col-md-7">
                 <div class="graphic">
-                    <img src="/img/principal.png" alt="" width="450px" height="450px">
+                    <img src="/img/principal.png" alt="" width="500px" height="500px">
                 </div>
             </div>
           </div>
