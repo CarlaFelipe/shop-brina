@@ -1,17 +1,17 @@
-import firebase from '@firebase/app'
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyD_VJgPnMP60tpHU5ISoGZPTE-e80kDvVo",
-    authDomain: "brina-shop.firebaseapp.com",
-    projectId: "brina-shop",
-    storageBucket: "brina-shop.appspot.com",
-    messagingSenderId: "31400710480",
-    appId: "1:31400710480:web:23dac85effb151e1649c55",
-    measurementId: "G-SPZEDKVR8K"
-  };
+  apiKey: "AIzaSyCwWEkIBTVAd1Z3xjC-K73ceZDgzUiXGk8",
+  authDomain: "brinamini-vue.firebaseapp.com",
+  projectId: "brinamini-vue",
+  storageBucket: "brinamini-vue.appspot.com",
+  messagingSenderId: "814139628524",
+  appId: "1:814139628524:web:f129b33c26417ee0017ec9"
+};
 
-  // Initialize Firebase
-  const firebase = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
-  export {firebase}
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);

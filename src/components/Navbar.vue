@@ -43,33 +43,55 @@
               placeholder="Buscar"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <button class="btn btn-outline-success" type="submit">
+              Buscar
+            </button>
             <!-- Button trigger modal -->
-            <button
+            <!-- <button
               type="button"
               class="btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#login"
             >
               Login
-            </button>
+            </button> -->
+            <!-- <ul class="nav navbar-nav flex-row float-right">
+              <li class="nav-item">
+                <router-link class="nav-link pr-3" to="/login"
+                  >Sign in</router-link
+                >
+              </li>
+              <li class="nav-item">
+                <router-link class="btn btn-outline-primary" to="/"
+                  >Sign up</router-link
+                >
+              </li>
+            </ul> -->
+            <li class="nav-item">
+              <router-link
+                to="/login"
+                class="nav-link active"
+                aria-current="page"
+                >Sign in</router-link
+              >
+            </li>
           </form>
         </div>
       </div>
-      <Login></Login>
+      <!-- <Login></Login> -->
     </nav>
   </div>
 </template>
 
 <script>
-import Login from "./Login.vue";
+// import Login from "./Login.vue";
 
 export default {
   name: "Navbar",
   props: {
     msg: String,
   },
-  components: { Login },
+  components: { },
 };
 </script>
 
@@ -79,5 +101,13 @@ export default {
   padding-top: 16px;
   padding-bottom: 16px;
   background-color: #fff !important;
+}
+.d-flex  {
+  height: 40px;
+}
+
+.sigin {
+  margin-left: 10px;
+  width: 100%;
 }
 </style>
