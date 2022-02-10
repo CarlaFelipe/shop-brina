@@ -42,7 +42,6 @@
                 >
               </li>
             </ul>
-
             <div class="tab-content" id="pills-tabContent">
               <div
                 class="tab-pane fade show active"
@@ -67,8 +66,11 @@
                     type="password"
                     class="form-control"
                     id="exampleInputPassword1"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                   />
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary">Login</button>
                 </div>
               </div>
               <div
@@ -78,6 +80,24 @@
                 aria-labelledby="pills-register-tab"
               >
                 <h5 class="text-center">Crear nueva cuenta</h5>
+
+                <div class="form-group">
+                  <label for="name">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Nombre"
+                  />
+                  <input
+                    type="text"
+                    v-model="name"
+                    class="form-control"
+                    id="name"
+                    placeholder="Nombre"
+                  />
+                </div>
+
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input
@@ -85,11 +105,16 @@
                     class="form-control"
                     id="email"
                     aria-describedby="emailHelp"
-                    placeholder="Enter email"
+                    placeholder="Email"
                   />
-                  <small class="form-text text-muted"
-                    >We'll never share your email with anyone else.</small
-                  >
+                  <input
+                    type="email"
+                    v-model="email"
+                    class="form-control"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    placeholder="Email"
+                  />
                 </div>
                 <div class="form-group">
                   <label for="password">Contraseña</label>
@@ -97,8 +122,22 @@
                     type="password"
                     class="form-control"
                     id="password"
-                    placeholder="Password"
+                    placeholder="Contraseña"
                   />
+                  <input
+                    type="password"
+                    v-model="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Contraseña"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <button class="btn btn-primary">Signup</button>
+                  <button class="btn btn-primary" @click="register">
+                    Signup
+                  </button>
                 </div>
               </div>
             </div>
@@ -114,6 +153,21 @@ export default {
   name: "Login",
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      name: null,
+      email: null,
+      password: null
+    };
+  },
+  methods: {
+    login() {
+      
+    },
+    register() {
+      
+    },
   },
 };
 </script>
