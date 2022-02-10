@@ -76,6 +76,14 @@
                   >Login</router-link
                 >
               </li>
+              <li class="nav-item">
+                <router-link
+                  to="/signup"
+                  class="nav-link active"
+                  aria-current="page"
+                  >Sign up</router-link
+                >
+              </li>
             </ul>
           </form>
         </div>
