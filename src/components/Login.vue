@@ -1,18 +1,18 @@
 <template>
     <div class="vue-tempalte">
         <form @submit.prevent="userLogin">
-            <h3>Sign In</h3>
+            <h3>Iniciar Sesión</h3>
             <div class="form-group">
-                <label>Email address</label>
+                <label>Email</label>
                 <input type="email" class="form-control" v-model="user.email" />
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label>Contraseña</label>
                 <input type="password" class="form-control" v-model="user.password" />
             </div>
-            <button type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+            <button type="submit" class="btn btn-dark btn-lg btn-block">Iniciar sesión</button>
             <p class="forgot-password text-right mt-2 mb-4">
-                <router-link to="/forgot-password">Forgot password ?</router-link>
+                <router-link to="/forgot-password">¿Has olvidado la contraseña ?</router-link>
             </p>
         </form>
     </div>
@@ -44,3 +44,11 @@ export default {
   }
 };
 </script>
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+.form-control {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+</style>

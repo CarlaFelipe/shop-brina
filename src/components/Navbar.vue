@@ -67,14 +67,16 @@
                 >
               </li>
             </ul> -->
-            <li class="nav-item">
-              <router-link
-                to="/login"
-                class="nav-link active"
-                aria-current="page"
-                >Sign in</router-link
-              >
-            </li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <router-link
+                  to="/login"
+                  class="nav-link active"
+                  aria-current="page"
+                  >Login</router-link
+                >
+              </li>
+            </ul>
           </form>
         </div>
       </div>
