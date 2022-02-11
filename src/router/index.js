@@ -1,8 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-// import Admin from "../views/Admin.vue";
-// import Overview from "./views/Overview.vue";
+import Admin from "../views/Admin.vue";
 import Productos from "../views/Productos.vue";
 
 Vue.use(VueRouter);
@@ -32,6 +31,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../components/Login.vue')
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: Admin
   },
   {
     path: "/about",
