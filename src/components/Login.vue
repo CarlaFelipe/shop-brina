@@ -36,7 +36,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(() => {
-            this.$router.push('/productos')
+            this.$router.push('/admin')
         })
         .catch((error) => {
           alert(error.message);
