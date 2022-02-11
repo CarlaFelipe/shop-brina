@@ -9,13 +9,6 @@
         <div class="col-md-4">
           <img src="/img/svg/product.svg" alt="" width="400" />
         </div>
-        <!-- <div class="col-md-6">
-          <h3>Learn More About us</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur quaerat voluptate iusto? Nihil voluptas vitae veritatis magnam reprehenderit, reiciendis ex? Libero quasi natus veniam voluptatum, voluptas exercitationem ratione consectetur et!
-          </p>
-            <button class="btn custom-btn btn-outline-primary mr-4">Browse Products</button>
-        </div> -->
         <div class="col-md-6">
           <h2 class="footer-title">
             Newsletter ¡-10% EN TU PRIMERA COMPRA!
