@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import firebase from "../firebase";
+import {firebase} from "../firebase.js"
+
 export default {
   data() {
     return {
@@ -35,7 +36,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
         .then(() => {
-            this.$router.push('/home')
+            this.$router.push('/productos')
         })
         .catch((error) => {
           alert(error.message);

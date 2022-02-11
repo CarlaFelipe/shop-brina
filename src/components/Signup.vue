@@ -1,9 +1,9 @@
 <template>
     <div class="vue-tempalte">
         <form @submit.prevent="userRegistration">
-            <h3>Sign Up</h3>
+            <h3>Crear nueva cuenta</h3>
             <div class="form-group">
-                <label>Name</label>
+                <label>Nombre</label>
                 <input type="text" class="form-control form-control-lg" v-model="user.name" />
             </div>
             <div class="form-group">
@@ -11,22 +11,24 @@
                 <input type="email" class="form-control form-control-lg" v-model="user.email" />
             </div>
             <div class="form-group">
-                <label>Password</label>
+                <label>Contraseña</label>
                 <input type="password" class="form-control form-control-lg" v-model="user.password" />
             </div>
             <button type="submit" class="btn btn-dark btn-lg btn-block">
-               Sign Up
+               Crear cuenta
             </button>
             <p class="forgot-password text-right">
-                Already registered 
-                <router-link :to="{name: 'login'}">sign in?</router-link>
+                Ya está registrado 
+                <router-link :to="{name: 'login'}">Acceder a tu cuenta?</router-link>
             </p>
         </form>
     </div>
 </template>
 
 <script>
-import firebase from "../firebase.js";
+
+import {firebase} from "../firebase.js"
+
 export default {
   data() {
     return {
