@@ -3,8 +3,9 @@
     <!-- <Navbar></Navbar> -->
     <Principal />
     <Productos />
+    <Footer />
 
-    <div class="container h-100">
+    <!-- <div class="container h-100">
       <div class="row p-5 h-100 justify-content-center align-items-center">
         <div class="col-md-4">
           <img src="/img/svg/product.svg" alt="" width="400" />
@@ -30,8 +31,8 @@
             <button class="btn custom-btn btn-info mr-4">Subcribirse</button>
         </div>
       </div>
-    </div>
-  </div>
+    </div>-->
+  </div> 
 </template>
 
 <script>
@@ -39,12 +40,14 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import Principal from "@/components/Principal.vue";
 import Productos from "@/views/Productos.vue";
+import Footer from "@/components/Footer.vue";
 export default {
   name: "Home",
   components: {
     HelloWorld,
     Principal,
     Productos,
+    Footer
   },
 };
 </script>

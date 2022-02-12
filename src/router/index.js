@@ -55,6 +55,7 @@ const router = new Router({
   ]
 });
 
+//no poder acceder a la parte de admin desde la url
 router.beforeEach((to, from, next) => {
 
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)

@@ -1,8 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
 @import './admin.scss';
 
-
+body{
+    font-family: 'Nunito', sans-serif !important;
+}
 .custom-btn{
     padding: 0.5rem 2.5rem;
     margin-left: 5px;
+}
+
+// quitar barra desplazamiento admin
+.sidebar-content {
+    -ms-overflow-style: none;  // IE 10+
+    overflow: -moz-scrollbars-none;  // Firefox
+}
+.sidebar-content::-webkit-scrollbar { 
+    display: none;  // Safari and Chrome
 }

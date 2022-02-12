@@ -81,20 +81,18 @@
                   to="/signup"
                   class="nav-link active"
                   aria-current="page"
-                  >Sign up</router-link
+                  >Registrarse</router-link
                 >
               </li>
             </ul>
           </form>
         </div>
       </div>
-      <!-- <Login></Login> -->
     </nav>
   </div>
 </template>
 
 <script>
-// import Login from "./Login.vue";
 
 export default {
   name: "Navbar",

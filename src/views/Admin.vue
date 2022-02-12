@@ -100,6 +100,10 @@
 <script>
 // @ is an alias to /src
 import Principal from "@/components/Principal.vue";
+import {firebase} from "../firebase.js";
+
+// https://adminlte.io/ parte sacada de aquí
+// https://azouaoui-med.github.io/pro-sidebar-template/#
 export default {
   name: "admin",
   components: {
@@ -108,6 +112,16 @@ export default {
   methods:{
       closeMenu(){
         $(".page-wrapper").toggleClass("toggled");
+      },
+      logout(){
+        //   firebase.logout().then;
+          firebase.auth().signOut()
+          .then(() => {
+              this.$router.replace('/');
+          })
+          .catch((err) =>{
+              console.log(err);
+          });
       }
   }
 };
