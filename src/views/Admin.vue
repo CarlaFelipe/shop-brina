@@ -16,7 +16,7 @@
                 <!-- sidebar-header  -->
                 <div class="sidebar-item sidebar-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="img/user.png" alt="User picture">
+                        <img class="img-responsive img-rounded" src="/img/user.png" alt="User picture">
                     </div>
                     <div class="user-info">
                         <span class="user-name">Carla
@@ -114,7 +114,6 @@ export default {
         $(".page-wrapper").toggleClass("toggled");
       },
       logout(){
-        //   firebase.logout().then;
           firebase.auth().signOut()
           .then(() => {
               this.$router.replace('/');

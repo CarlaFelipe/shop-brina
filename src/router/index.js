@@ -3,6 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Admin from "../views/Admin.vue";
 import Productos from "../views/Productos.vue";
+import Resumen from "../views/Resumen.vue";
+import Pedidos from "../views/Pedidos.vue";
+import ProductosAdmin from "../views/ProductosAdmin.vue";
 import {firebase} from "../firebase.js";
 import Router from "vue-router";
 
@@ -42,6 +45,23 @@ const router = new Router({
       name: "admin",
       component: Admin,
       meta: { requiresAuth: true },
+      children:[
+        {
+          path: "resumen",
+          name: "resumen",
+          component: Resumen
+        },
+        {
+          path: "productos",
+          name: "productos",
+          component: ProductosAdmin
+        },
+        {
+          path: "pedidos",
+          name: "pedidos",
+          component: Pedidos
+        }
+      ]
     },
     {
       path: "/about",

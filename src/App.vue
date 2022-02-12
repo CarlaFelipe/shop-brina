@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar v-if="!['admin'].includes($route.name)"></Navbar>
+    <Navbar v-if="!['admin', 'resumen', 'pedidos'].includes($route.name)"></Navbar>
     <router-view />
   </div>
 </template>
