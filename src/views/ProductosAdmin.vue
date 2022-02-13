@@ -18,7 +18,7 @@
 
     <hr />
        <h3 class="d-inline-block">Lista de productos</h3>
-       <button @click="addProducto" class="btn btn-primary add">Añadir Prodcuto</button>
+       <button @click="addNewProducto" class="btn btn-primary add">Añadir Prodcuto</button>
 
       <div class="table-responsive">
         <table class="table">
@@ -32,37 +32,13 @@
 
           <tbody>
             <!-- se queda sin el :key porque si no da error-->
-            <tr v-for="producto in productos">
-              <td>{{ producto.data().nombre }}</td>
-              <td>{{ producto.data().precio }}</td>
-              <td>
-                <button
-                  @click="editarProducto(producto)"
-                  class="btn btn-primary"
-                >
-                  Editar
-                </button>
-                <button
-                  @click="borrarProducto(producto.id)"
-                  class="btn btn-danger"
-                >
-                  Borrar
-                </button>
-              </td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
     <!-- Modal Editar-->
-    <div
-      class="modal fade"
-      id="editar"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="editarLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
+    <div class="modal fade" id="producto" tabindex="-1" role="dialog" aria-labelledby="editLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="editLabel">Editar Productos</h5>
@@ -76,23 +52,36 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="Nombre producto"
-                v-model="producto.nombre"
-                class="form-control"
-              />
-            </div>
+           <div class="row">
+                  <!-- main product -->
+                  <div class="col-md-8">
+                    <div class="form-group">
+                      <input type="text" placeholder="Nombre producto" v-model="producto.nombre" class="form-control">
+                    </div>
 
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="Precio"
-                v-model="producto.precio"
-                class="form-control"
-              />
-            </div>
+                    <div class="form-group">
+                      <textarea name="description" class="form-control" placeholder="Descripción producto" v-model='producto.descripcion' cols="30" rows="10"></textarea>
+                    </div>
+                  </div>
+                  <!-- producto modal detalles -->
+                  <div class="col-md-4">
+                    <h4 class="display-6">Detalles Producto</h4>
+                    <hr>
+
+                    <div class="form-group">
+                      <input type="text" placeholder="Precio producto" v-model="producto.precio" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                      <input type="text" placeholder="Tags prodcutos" v-model="producto.tag" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="product_image">Imagen Producto</label>
+                      <input type="file" @change="actualizarImagen()" class="form-control">
+                    </div>
+
+                  </div>
           </div>
           <div class="modal-footer">
             <button
@@ -103,7 +92,7 @@
               Cerrar
             </button>
             <button
-              @click="actualizarProducto()"
+              @click="addProducto()"
               type="button"
               class="btn btn-primary"
             >
@@ -114,6 +103,7 @@
       </div>
     </div>
     <!-- fin modal editar -->
+  </div>
   </div>
 </template>
 
@@ -131,83 +121,45 @@ export default {
       producto: {
         nombre: null,
         precio: null,
+        descripcion:null,
+        precio:null,
+        tag:null,
+        image:null
       },
       activeItem: null,
     };
   },
+
+   firestore(){
+      return {
+        productos: db.collection('productos'),
+      }
+  },
+
   methods: {
-    observador() {
-      db.collection("productos").onSnapshot((querySnapshot) => {
-        this.productos = [];
-        querySnapshot.forEach((doc) => {
-          this.productos.push(doc);
-        });
+    addNewProducto(){
+        $('#producto').modal('show');
+         $(".cerrarModal").click(function () {
+        $("#producto").modal("hide");
       });
     },
     actualizarProducto() {
-      db.collection("productos")
-        .doc(this.activeItem)
-        .update(this.producto)
-        .then(() => {
-          $("#editar").modal("hide");
-          this.observador();
-          console.log("Producto actualizado!");
-        })
-        .catch(function (error) {
-          console.error("Error al actualizar: ", error);
-        });
+      
     },
     editarProducto(producto) {
-      $("#editar").modal("show");
-      this.producto = producto.data();
-      this.activeItem = producto.id;
-
-      $(".cerrarModal").click(function () {
-        $("#editar").modal("hide");
-      });
+     
     },
     borrarProducto(doc) {
-      if (confirm("¿Estas seguro de borrar este producto? ")) {
-        db.collection("productos")
-          .doc(doc)
-          .delete()
-          .then(function () {
-            console.log("Producto borrado exitosamente!");
-          })
-          .catch(function (error) {
-            console.error("Error al borrar el producto: ", error);
-          });
-      } else {
-      }
+      
     },
     leerDatos() {
-      db.collection("productos")
-        .get()
-        .then((querySnapshot) => {
-          // this.products = querySnapshot;
-          querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            this.productos.push(doc);
-          });
-        });
+      
     },
-    guardarProd() {
-      db.collection("productos")
-        .add(this.producto)
-        .then((docRef) => {
-          console.log("Document written with ID: ", docRef.id);
-          this.reset();
-        })
-        .catch(function (error) {
-          console.error("Error adding document: ", error);
-        });
-    },
-    reset() {
-      // Object.assign(this.$data, this.$options.data.apply(this));
+    addProducto() {
+      this.$firestore.productos.add(this.producto);
     },
   },
   created() {
-    this.leerDatos();
   },
 };
 </script>
@@ -219,5 +171,11 @@ export default {
 }
 .add {
   float: right;
+}
+
+@media (min-width: 992px){
+  .modal-lg, .modal-xl {
+      max-width: 1300px;
+  }
 }
 </style>
