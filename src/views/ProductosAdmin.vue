@@ -206,6 +206,7 @@ export default {
     actualizarImagen(e) {
       // https://firebase.google.com/docs/storage/web/upload-files
       // TO DO - MIRAR - FALLA POR UN ERROR DE PERMISOS 400 --> https://stackoverflow.com/questions/41352150/typeerror-firebase-storage-is-not-a-function
+      //RESUELTO ---> https://stackoverflow.com/questions/50123992/error-in-firebase-permission-unable-to-access-bucket-through-firebase-storage
       let file = e.target.files[0];
       console.log(e.target.files[0]);
       var storageRef = firebase.storage().ref('productos/'+ file.name);
