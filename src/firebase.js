@@ -4,6 +4,8 @@ import { initializeApp } from "firebase/app";
 import fb from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+// const firebase = require("firebase");
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -24,4 +26,8 @@ const firebaseConfig = {
 
 // export {db};
 
+// Required for side-effects
+require("firebase/firestore");
 export const firebase = !fb.apps.length ? fb.initializeApp(firebaseConfig) : fb.app()
+
+export const db = firebase.firestore();
