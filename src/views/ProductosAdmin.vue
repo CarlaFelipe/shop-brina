@@ -171,11 +171,13 @@ export default {
         confirmButtonText: 'Si, borrar'
       }).then((result) => {
         if (result.value) {
-          this.$firestore.productos.doc(doc['.key']).delete()
-          Toast.fire({
-            type: 'success',
-            title: 'Borrado correctamente'
-          })
+          console.log(doc['id']);
+          this.$firestore.productos.doc(doc['id']).delete()
+          Swal.fire(
+            'Borrado!',
+            'Tu producto ha sido borrado correctamente',
+            'success'
+          )
         
         }
       })
@@ -189,10 +191,11 @@ export default {
       $(".cerrarModal").click(function () {
         $("#producto").modal("hide");
       });
-       Toast.fire({
-            type: 'success',
-            title: 'Producto creado correctamente'
-          })
+       Swal.fire(
+          'Creado!',
+          'Producto creado correctamente',
+          'success',
+          )
     },
   },
   created() {
