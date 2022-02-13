@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import fb from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import 'firebase/compat/storage';
 // const firebase = require("firebase");
 
 

@@ -89,7 +89,7 @@
 
                     <div class="form-group">
                       <label for="product_image">Imagen Producto</label>
-                      <input type="file" @change="actualizarImagen()" class="form-control">
+                      <input type="file" @change="actualizarImagen" class="form-control">
                     </div>
 
                   </div>
@@ -144,8 +144,19 @@ export default {
   },
 
   methods: {
+    reset() {
+      this.producto = {
+        nombre: null,
+        precio: null,
+        descripcion:null,
+        precio:null,
+        tag:null,
+        image:null
+      }
+    },
     addNewProducto(){
        this.modal = 'nuevo';
+       this.reset();
         $('#producto').modal('show');
          $(".cerrarModal").click(function () {
         $("#producto").modal("hide");
@@ -191,6 +202,26 @@ export default {
         
         }
       })
+    },
+    actualizarImagen(e) {
+      // https://firebase.google.com/docs/storage/web/upload-files
+      // TO DO - MIRAR - FALLA POR UN ERROR DE PERMISOS 400 --> https://stackoverflow.com/questions/41352150/typeerror-firebase-storage-is-not-a-function
+      let file = e.target.files[0];
+      console.log(e.target.files[0]);
+      var storageRef = firebase.storage().ref('productos/'+ file.name);
+      let uploadTask  = storageRef.put(file);
+      uploadTask.on('state_changed', (snapshot) => {
+        
+      }, (error) => {
+        // Handle unsuccessful uploads
+      }, () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          this.producto.image = downloadURL;
+          console.log('Archivo disponible en: ', downloadURL);
+        });
+      });
     },
     leerDatos() {
       
