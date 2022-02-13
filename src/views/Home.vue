@@ -2,7 +2,8 @@
   <div class="home">
     <!-- <Navbar></Navbar> -->
     <Principal />
-    <Productos />
+    <!-- <Productos /> -->
+    <lista-productos></lista-productos>
     <Footer />
 
     <!-- <div class="container h-100">
@@ -41,13 +42,15 @@ import HelloWorld from "@/components/HelloWorld.vue";
 import Principal from "@/components/Principal.vue";
 import Productos from "@/views/Productos.vue";
 import Footer from "@/components/Footer.vue";
+import ListaProductos from '../sections/ListaProductos.vue';
 export default {
   name: "Home",
   components: {
     HelloWorld,
     Principal,
     Productos,
-    Footer
+    Footer,
+    ListaProductos
   },
 };
 </script>

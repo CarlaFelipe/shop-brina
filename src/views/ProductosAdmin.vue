@@ -91,6 +91,14 @@
                       <label for="product_image">Imagen Producto</label>
                       <input type="file" @change="actualizarImagen" class="form-control">
                     </div>
+                    <div class="form-group d-flex">
+                      <div class="p-1" v-for="(image, index) in producto.images" :key="image">
+                          <div class="img-wrapp">
+                              <img :src="image" alt="" width="80px">
+                              <!-- <span class="delete-img" @click="deleteImage(image,index)">X</span> -->
+                          </div>
+                      </div>
+                    </div>
 
                   </div>
           </div>
@@ -130,7 +138,7 @@ export default {
         descripcion:null,
         precio:null,
         tag:null,
-        image:null
+        images: [],
       },
       activeItem: null,
       modal: null
@@ -151,7 +159,7 @@ export default {
         descripcion:null,
         precio:null,
         tag:null,
-        image:null
+        images: [],
       }
     },
     addNewProducto(){
@@ -207,22 +215,31 @@ export default {
       // https://firebase.google.com/docs/storage/web/upload-files
       // TO DO - MIRAR - FALLA POR UN ERROR DE PERMISOS 400 --> https://stackoverflow.com/questions/41352150/typeerror-firebase-storage-is-not-a-function
       //RESUELTO ---> https://stackoverflow.com/questions/50123992/error-in-firebase-permission-unable-to-access-bucket-through-firebase-storage
-      let file = e.target.files[0];
-      console.log(e.target.files[0]);
-      var storageRef = firebase.storage().ref('productos/'+ file.name);
-      let uploadTask  = storageRef.put(file);
-      uploadTask.on('state_changed', (snapshot) => {
-        
-      }, (error) => {
-        // Handle unsuccessful uploads
-      }, () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          this.producto.image = downloadURL;
-          console.log('Archivo disponible en: ', downloadURL);
-        });
-      });
+      if (e.target.files[0]) {
+        let file = e.target.files[0];
+
+        var storageRef = firebase
+          .storage()
+          .ref("productos/" + Math.random() + "_" + file.name);
+
+        let uploadTask = storageRef.put(file);
+
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {},
+          (error) => {
+            // Handle unsuccessful uploads
+          },
+          () => {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+              this.producto.images.push(downloadURL);
+            });
+          }
+        );
+      }
     },
     leerDatos() {
       
