@@ -32,7 +32,18 @@
 
           <tbody>
             <!-- se queda sin el :key porque si no da error-->
-            
+            <tr v-for="producto in productos">
+              <td>
+                {{producto.nombre}}
+              </td>
+              <td>
+                {{producto.precio}}
+              </td>
+              <td>
+                <button class="btn btn-primary" @click="editarProducto(producto)">Editar</button>
+                <button class="btn btn-danger" @click="borrarProducto(producto)">Borrar</button>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -41,7 +52,7 @@
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editLabel">Editar Productos</h5>
+            <h5 class="modal-title" id="editLabel">Añadir nuevo producto</h5>
             <button
               type="button"
               class="close cerrarModal"
@@ -91,13 +102,8 @@
             >
               Cerrar
             </button>
-            <button
-              @click="addProducto()"
-              type="button"
-              class="btn btn-primary"
-            >
-              Guardar
-            </button>
+            <button @click="addProducto()" type="button" class="btn btn-primary" v-if="modal == 'nuevo'">Guardar cambios</button>
+            <button @click="actualizarProducto()" type="button" class="btn btn-primary" v-if="modal == 'editar'">Aplicar cambios</button>
           </div>
         </div>
       </div>
@@ -127,6 +133,7 @@ export default {
         image:null
       },
       activeItem: null,
+      modal: null
     };
   },
 
@@ -138,6 +145,7 @@ export default {
 
   methods: {
     addNewProducto(){
+       this.modal = 'nuevo';
         $('#producto').modal('show');
          $(".cerrarModal").click(function () {
         $("#producto").modal("hide");
@@ -147,16 +155,44 @@ export default {
       
     },
     editarProducto(producto) {
+      this.modal = 'editar';
+      this.producto = producto;
+      $('#producto').modal('show');
      
     },
     borrarProducto(doc) {
-      
+       Swal.fire({
+        title: 'Estar seguro de querer borrar el producto?',
+        text: "No podrás revertirlo.!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar'
+      }).then((result) => {
+        if (result.value) {
+          this.$firestore.productos.doc(doc['.key']).delete()
+          Toast.fire({
+            type: 'success',
+            title: 'Borrado correctamente'
+          })
+        
+        }
+      })
     },
     leerDatos() {
       
     },
     addProducto() {
       this.$firestore.productos.add(this.producto);
+      $('#producto').modal('hide');
+      $(".cerrarModal").click(function () {
+        $("#producto").modal("hide");
+      });
+       Toast.fire({
+            type: 'success',
+            title: 'Producto creado correctamente'
+          })
     },
   },
   created() {
