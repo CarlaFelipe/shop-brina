@@ -17,35 +17,8 @@
     </div>
 
     <hr />
-
-    <h3>Basic CRUD (create/read/update/delete) in Firebase and Vue</h3>
-
-    <div class="product-test">
-      <div class="form-group">
-        <input
-          type="text"
-          placeholder="nombre del producto"
-          v-model="producto.nombre"
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group">
-        <input
-          type="text"
-          placeholder="Precio"
-          v-model="producto.precio"
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group">
-        <button @click="guardarProd" class="btn btn-primary">Guardar</button>
-      </div>
-
-      <hr />
-
-      <h3>Lista productos</h3>
+       <h3 class="d-inline-block">Lista de productos</h3>
+       <button @click="addProducto" class="btn btn-primary add">Añadir Prodcuto</button>
 
       <div class="table-responsive">
         <table class="table">
@@ -80,36 +53,67 @@
           </tbody>
         </table>
       </div>
-    </div>
     <!-- Modal Editar-->
-      <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editLabel">Editar Productos</h5>
-              <button type="button" class="close cerrarModal" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+    <div
+      class="modal fade"
+      id="editar"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editarLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editLabel">Editar Productos</h5>
+            <button
+              type="button"
+              class="close cerrarModal"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Nombre producto"
+                v-model="producto.nombre"
+                class="form-control"
+              />
             </div>
-            <div class="modal-body">
 
-                <div class="form-group">
-                  <input type="text" placeholder="Nombre producto" v-model="producto.nombre" class="form-control">
-                </div>
-
-                <div class="form-group">
-                  <input type="text" placeholder="Precio" v-model="producto.precio" class="form-control">
-                </div>
-
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Precio"
+                v-model="producto.precio"
+                class="form-control"
+              />
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary cerrarModal" data-dismiss="modal">Cerrar</button>
-              <button @click="actualizarProducto()" type="button" class="btn btn-primary">Guardar</button>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary cerrarModal"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              @click="actualizarProducto()"
+              type="button"
+              class="btn btn-primary"
+            >
+              Guardar
+            </button>
           </div>
         </div>
       </div>
-      <!-- fin modal editar -->
+    </div>
+    <!-- fin modal editar -->
   </div>
 </template>
 
@@ -128,24 +132,39 @@ export default {
         nombre: null,
         precio: null,
       },
-        activeItem:null
+      activeItem: null,
     };
   },
   methods: {
-    actualizarProducto(){
-      db.collection("productos").doc(this.activeItem).update(this.producto)
-        .then(function() {
-          $('#editar').modal('hide');
-            console.log("Producto actualizado!");
+    observador() {
+      db.collection("productos").onSnapshot((querySnapshot) => {
+        this.productos = [];
+        querySnapshot.forEach((doc) => {
+          this.productos.push(doc);
+        });
+      });
+    },
+    actualizarProducto() {
+      db.collection("productos")
+        .doc(this.activeItem)
+        .update(this.producto)
+        .then(() => {
+          $("#editar").modal("hide");
+          this.observador();
+          console.log("Producto actualizado!");
         })
-        .catch(function(error) {
-            console.error("Error al actualizar: ", error);
+        .catch(function (error) {
+          console.error("Error al actualizar: ", error);
         });
     },
-    editarProducto(producto){
-        $('#editar').modal('show');
-        this.producto = producto.data();
-        this.activeItem = producto.id;
+    editarProducto(producto) {
+      $("#editar").modal("show");
+      this.producto = producto.data();
+      this.activeItem = producto.id;
+
+      $(".cerrarModal").click(function () {
+        $("#editar").modal("hide");
+      });
     },
     borrarProducto(doc) {
       if (confirm("¿Estas seguro de borrar este producto? ")) {
@@ -197,5 +216,8 @@ export default {
 <style scoped lang="scss">
 .form-group {
   padding-bottom: 10px;
+}
+.add {
+  float: right;
 }
 </style>
