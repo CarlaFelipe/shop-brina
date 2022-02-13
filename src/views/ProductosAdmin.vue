@@ -52,7 +52,7 @@
         <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="editLabel">Añadir nuevo producto</h5>
+            <h5 class="modal-title" id="editLabel">Editar nuevo producto</h5>
             <button
               type="button"
               class="close cerrarModal"
@@ -152,11 +152,21 @@ export default {
       });
     },
     actualizarProducto() {
-      
+      this.$firestore.productos.doc(this.producto.id).update(this.producto);
+      Swal.fire(
+            'Actualizado!',
+            'Tu producto ha sido actualizado correctamente',
+            'success'
+          )
+        $('#producto').modal('hide');
+        $(".cerrarModal").click(function () {
+        $("#producto").modal("hide");
+      });
     },
     editarProducto(producto) {
       this.modal = 'editar';
       this.producto = producto;
+      // tihs.activeItem = producto['id'];
       $('#producto').modal('show');
      
     },
