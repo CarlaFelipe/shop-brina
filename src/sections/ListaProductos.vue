@@ -20,7 +20,7 @@
                           </div>
                         </div>
                         <add-carrito
-                          :imagen-prod="getImagen(product.images)"
+                          :imagen-prod="getImagen(producto.images)"
                           :nombre="producto.nombre"
                           :precio="producto.precio"
                           :producto-id="producto.id"

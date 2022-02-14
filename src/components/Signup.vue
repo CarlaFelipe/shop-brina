@@ -4,17 +4,17 @@
             <h3>Crear nueva cuenta</h3>
             <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" class="form-control form-control-lg" v-model="user.name" />
+                <input type="text" class="input-name" v-model="user.name" />
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control form-control-lg" v-model="user.email" />
+                <input type="email" class="" v-model="user.email" />
             </div>
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" class="form-control form-control-lg" v-model="user.password" />
+                <input type="password" class="" v-model="user.password" />
             </div>
-            <button type="submit" class="btn btn-dark btn-lg btn-block">
+            <button type="submit" class="btn btn-dark btn-md btn-block">
                Crear cuenta
             </button>
             <p class="forgot-password text-right">
@@ -60,3 +60,12 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+input {
+  margin: 10px;
+  width: 340px;
+}
+button {
+  margin: 10px;
+}
+</style>

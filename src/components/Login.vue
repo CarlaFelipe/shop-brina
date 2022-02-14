@@ -4,11 +4,11 @@
             <h3>Iniciar Sesión</h3>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" v-model="user.email" />
+                <input type="email" class="input-email" v-model="user.email" />
             </div>
             <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" class="form-control" v-model="user.password" />
+                <input type="password" class="input-password" v-model="user.password" />
             </div>
             <button type="submit" class="btn btn-dark btn-lg btn-block">Iniciar sesión</button>
             <p class="forgot-password text-right mt-2 mb-4">
@@ -47,9 +47,17 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.form-control {
-  justify-content: center;
-  align-items: center;
-  display: flex;
+// .form-control {
+//   justify-content: center;
+//   align-items: center;
+//   display: flex;
+// }
+
+input {
+  margin: 10px;
+  width: 340px;
+}
+button {
+  margin: 10px;
 }
 </style>

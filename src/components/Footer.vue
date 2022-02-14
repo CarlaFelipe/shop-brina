@@ -1,132 +1,165 @@
 <template>
-         <footer class="footer-distributed">
-
-      <div class="footer-right">
-
-        <!-- <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a> -->
-
+  <footer>
+    <div class="container">
+      <div class="left">
+        <div class="col-1">
+          <router-link class="header" :to="{ name: 'Home' }">BRINAMINI</router-link>
+          <ul>
+            <li>
+              <a href="#"><img src="/img/svg/youtube-brands.svg" alt="" class="svg-icon" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="/img/svg/twitter-brands.svg" alt="" class="svg-icon" /></a>
+              
+            </li>
+            <li>
+              <a href="https://www.instagram.com/solobrinamini/"><img src="/img/svg/instagram-brands.svg" alt="" class="svg-icon" /></a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/carla-liarte-felipe-25aa28115/"><img src="/img/svg/linkedin-brands.svg" alt="" class="svg-icon" /></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-2">
+          <ul>
+            <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+            <router-link class="link" :to="{ name: 'Productos' }">Productos</router-link>
+          </ul>
+        </div>
       </div>
-
-      <div class="footer-left">
-
-        <p class="footer-links">
-          <a class="link-1" href="#">Home</a>
-
-          <a href="#">Sobre mi</a>
-        </p>
-
-        <p>BRINAMINI &copy; 2022</p>
+      <div class="right">
+        <p>Copyright 2022 </p>
       </div>
-
-    </footer>
+    </div>
+  </footer>
 </template>
 
 <script>
 export default {
   name: "Footer",
-};
+  components: {
+  },
+ };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-
-section {
-  width: 100%;
-  display: inline-block;
-  background: #ccc;
-  height: 60vh;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  text-decoration: underline;
+<style lang="scss" scoped>
+img {
+  color: #0dcaf0;
 }
+footer {
+  margin-top: auto;
+  padding: 100px 25px;
+  background-color: #303030;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    @media (min-width: 800px) {
+      flex-direction: row;
+      gap: 0px;
+    }
 
-.footer-distributed {
-  background-color: #292c2f;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-  box-sizing: border-box;
-  width: 100%;
-  text-align: left;
-  font: normal 16px sans-serif;
-  padding: 45px 50px;
-}
+    > div {
+      display: flex;
+      flex: 1;
+    }
 
-.footer-distributed .footer-left p {
-  color: #8f9296;
-  font-size: 14px;
-  margin: 0;
-}
-/* Footer links */
+    .left {
+      gap: 32px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @media (min-width: 800px) {
+        flex-direction: row;
+        align-items: initial;
+        gap: 0;
+      }
 
-.footer-distributed p.footer-links {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
-  margin: 0 0 10px;
-  padding: 0;
-  transition: ease .25s;
-}
+      .header {
+        text-align: center;
+        font-size: 24px;
+        color: #fff;
+        margin-bottom: 16px;
+        text-decoration: none;
+        font-weight: 600;
+        @media (min-width: 800px) {
+          text-align: initial;
+        }
+      }
+      ul {
+        gap: 16px;
+        list-style: none;
+        display: flex;
+      }
 
-.footer-distributed p.footer-links a {
-  display: inline-block;
-  line-height: 1.8;
-  text-decoration: none;
-  color: inherit;
-  transition: ease .25s;
-}
+      .col-1,
+      .col-2 {
+        gap: 32px;
+        display: flex;
+        flex: 1;
+        @media (min-width: 800px) {
+          gap: 0;
+        }
+      }
 
-.footer-distributed .footer-links a:before {
-  content: "·";
-  font-size: 20px;
-  left: 0;
-  color: #fff;
-  display: inline-block;
-  padding-right: 5px;
-}
+      .col-1 {
+        flex-direction: column;
 
-.footer-distributed .footer-links .link-1:before {
-  content: none;
-}
+        h2 {
+          text-align: center;
+          @media (min-width: 800px) {
+            text-align: initial;
+          }
+        }
+        ul {
+          margin-top: auto;
 
-.footer-distributed .footer-right {
-  float: right;
-  margin-top: 6px;
-  max-width: 180px;
-}
+          li {
+            display: flex;
+            align-items: center;
+            .svg-icon {
+              width: 24px;
+              height: auto;
+              color: #0dcaf0;
+            }
+          }
+        }
+      }
 
-.footer-distributed .footer-right a {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  background-color: #33383b;
-  border-radius: 2px;
-  font-size: 20px;
-  color: #ffffff;
-  text-align: center;
-  line-height: 35px;
-  margin-left: 3px;
-  transition:all .25s;
-}
+      .col-2 {
+        ul {
+          height: 100%;
+          justify-content: center;
+          flex-direction: row;
+          flex-wrap: wrap;
+          @media (min-width: 800px) {
+            flex-direction: column;
+          }
+          .link {
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      }
+    }
 
-.footer-distributed .footer-right a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
+    .right {
+      gap: 32px;
+      color: #fff;
+      align-items: center;
+      flex-direction: column;
+      @media (min-width: 800px) {
+        align-items: flex-end;
+        gap: 0;
+      }
+    }
 
-.footer-distributed p.footer-links a:hover{text-decoration:underline;}
-
-/* Media Queries */
-
-@media (max-width: 600px) {
-  .footer-distributed .footer-left, .footer-distributed .footer-right {
-    text-align: center;
-  }
-  .footer-distributed .footer-right {
-    float: none;
-    margin: 0 auto 20px;
-  }
-  .footer-distributed .footer-left p.footer-links {
-    line-height: 1.8;
+    p {
+      margin-top: auto;
+    }
   }
 }
 </style>
