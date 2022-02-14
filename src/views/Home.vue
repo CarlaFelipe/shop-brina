@@ -45,8 +45,12 @@
               </div>
               <div class="modal-body">
                   <ul>
-                    <li v-for="item in this.$store.state.carrito">
-                        {{item.nombreProducto}}
+                    <li v-for="item in this.$store.state.carrito" class="media">
+                      <img :src="item.imagenProducto" width="80px" class="align-self-center mr-3" alt="">
+                      <div class="media-body">
+                        <h5 class="mt-0">{{item.nombreProducto}}</h5>
+                        <p class="mt-0">{{item.precioProducto | currency('€', 2, { symbolOnLeft: false }, { decimalSeparator: ',' }) }}</p>
+                      </div>
                     </li>
                   </ul>
               </div>
@@ -57,7 +61,7 @@
             </div>
           </div>
         </div>
-
+    <!-- <modal-carrito></modal-carrito> -->
   </div> 
 </template>
 

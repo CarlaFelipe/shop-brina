@@ -10,7 +10,7 @@ export default {
   props: {
     nombre: String,
     precio: String,
-    imagen: String,
+    image: String,
     idProducto: String
   },
 
@@ -18,8 +18,10 @@ export default {
       return {
           item :{
             nombreProducto: this.nombre,
+            imagenProducto: this.image,
             precioProducto: this.precio,
-            id_Producto: this.idProducto,
+            idProducto: this.id,
+            // productQuantity: 1,
           }
 
       }

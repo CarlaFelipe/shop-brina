@@ -16,11 +16,11 @@
                         <div class="card-body">
                           <div class="d-flex justify-content-between">
                             <h5 class="card-title">{{ producto.nombre }}</h5>
-                            <h5 class="card-priceS">{{ producto.precio | currency('€', 0, { symbolOnLeft: false }) }}</h5>
+                            <h5 class="card-prices">{{ producto.precio | currency('€', 2, { symbolOnLeft: false }, { decimalSeparator: ',' }) }}</h5>
                           </div>
                         </div>
                         <add-carrito
-                          :imagen-prod="getImagen(producto.images)"
+                          :image="getImagen(producto.images)"
                           :nombre="producto.nombre"
                           :precio="producto.precio"
                           :producto-id="producto.id"
