@@ -25,7 +25,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Continuar comprando</button>
-                <button type="button" class="btn btn-primary">Pagar</button>
+                <button type="button" class="btn btn-primary" @click="realizarPago">Pagar</button>
               </div>
             </div>
           </div>
@@ -38,6 +38,12 @@ export default {
   name: "modal-carrito",
   props: {
     msg: String
+  },
+  methods:{
+    realizarPago(){
+      $('#carritoModal').modal('hide')
+      this.$router.push('/pagar')  
+    }
   }
 };
 </script>
