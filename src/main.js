@@ -26,6 +26,7 @@ window.$ = window.jQuery = jQuery;
 Vue.component('Navbar', require('./components/Navbar.vue').default);
 Vue.component('lista-productos', require('./sections/ListaProductos.vue').default);
 Vue.component('add-carrito', require('./components/AddCarrito.vue').default);
+Vue.component('modal-carrito', require('./components/ModalCarrito.vue').default);
 
 import VueCarousel from 'vue-carousel';
 Vue.use(VueCarousel);

@@ -23,7 +23,7 @@
                           :image="getImagen(producto.images)"
                           :nombre="producto.nombre"
                           :precio="producto.precio"
-                          :producto-id="producto.id"
+                          :p-id="producto.id"
                         ></add-carrito>
                     </div>
               </div>

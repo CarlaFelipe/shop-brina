@@ -8,7 +8,14 @@ export default new Vuex.Store({
     },
     mutations:{
       addCarrito(state, item){
+        let cantidad = state.carrito.find(producto => producto.idProducto == item.idProducto );
+
+        if(cantidad){
+          cantidad.cantidadProducto++;
+        }else{
           state.carrito.push(item);
+
+        }
       },
   },
 

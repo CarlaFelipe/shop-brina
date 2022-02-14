@@ -68,12 +68,12 @@
                             </router-link>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <router-link to="/admin/perfil">
                                 <i class="fa fa-user"></i>
                                 <span>Perfil</span>
                             </router-link>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#" @click="logout()">
                                 <i class="fa fa-power-off"></i>
