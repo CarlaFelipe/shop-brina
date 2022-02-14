@@ -26,3 +26,7 @@
         </div>
   </div>
 </template>
+
+<style>
+li { display: inline; }
+</style>

@@ -1,7 +1,6 @@
 <template>
   <div class="productos" id="productos">
     <div class="container">
-      <h1 class="text-center p-4">Lista de productos</h1>
       <!-- <div class="row">
         <!-- <div class="col-md-4" v-for="producto in productos"> -->
           <!-- <div class="col-md-4"> -->
