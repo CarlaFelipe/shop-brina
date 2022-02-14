@@ -95,7 +95,6 @@
                       <div class="p-1" v-for="(image, index) in producto.images" :key="image">
                           <div class="img-wrapp">
                               <img :src="image" alt="" width="80px">
-                              <!-- <span class="delete-img" @click="deleteImage(image,index)">X</span> -->
                           </div>
                       </div>
                     </div>
